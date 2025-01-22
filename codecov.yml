@@ -3,9 +3,10 @@ coverage:
     project:
       integration:
         target: 60%
+        threshold: 10%
         flags:
           - totalTest
 flags:
   totalTest:
     paths:
-      - ./potatocountry/potatocountry/src/main/java/com/potatocountry
+      - ./potatocountry
