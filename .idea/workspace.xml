@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4132b1b4-3142-4b60-a7f6-5666ddf062de" name="Changes" comment="✨ [Feature] main-deploy 추가 및 TestCoverage update">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/potatocountry/codecov.yml" beforeDir="false" afterPath="$PROJECT_DIR$/codecov.yml" afterDir="false" />
-    </list>
+    <list default="true" id="4132b1b4-3142-4b60-a7f6-5666ddf062de" name="Changes" comment="✨ [Feature] main-deploy 추가 및 TestCoverage update" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -249,7 +246,7 @@
       <option name="presentableId" value="Default" />
       <updated>1737452198403</updated>
       <workItem from="1737452199442" duration="1803000" />
-      <workItem from="1737515477381" duration="17972000" />
+      <workItem from="1737515477381" duration="18403000" />
     </task>
     <task id="LOCAL-00001" summary="init folder">
       <option name="closed" value="true" />

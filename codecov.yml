@@ -1,7 +1,7 @@
 coverage:
   status:
     project:
-      default:
+      integration:
         target: 60%
         threshold: 10%
         flags:
