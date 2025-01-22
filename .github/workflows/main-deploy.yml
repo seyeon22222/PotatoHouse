@@ -1,3 +1,4 @@
+
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
@@ -36,7 +37,7 @@ jobs:
 
       - name: Make application ymls
         run: |
-          cd ./potatocountry/src/main/resources
+          cd ./src/main/resources
           echo "${{ secrets.TEST_YML }}" | base64 -d > application.yml
         shell: bash
 
