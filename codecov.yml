@@ -1,7 +1,7 @@
 coverage:
   status:
     project:
-      combinedCoverageReport:
+      default:
         target: 60%
         threshold: 10%
         flags:
