@@ -6,10 +6,6 @@ on:
   pull_request:
     branches: [main]
 
-defaults:
-  run:
-    working-directory: ./potatocountry
-
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -24,7 +20,9 @@ jobs:
         run: chmod +x gradlew
 
       - name: 👨‍👨‍👧‍👦 Total Test with Gradle
-        run: ./gradlew --console verbose clean combinedCoverageReport
+        run: |
+          cd ./potatocountry
+          ./gradlew --console verbose clean combinedCoverageReport
         
       - name: Debug - List files
         run: ls -R ./build/reports/jacoco
@@ -34,7 +32,7 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true
-          files: build/reports/jacoco/combinedCoverageReport/combinedCoverageReport.xml
+          files: ./potatocountrybuild/reports/jacoco/combinedCoverageReport/combinedCoverageReport.xml
           flags: totalTest
           name: codecov-total
           verbose: true
