@@ -34,7 +34,7 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true
-          files: ./build/reports/jacoco/combinedCoverageReport/combinedCoverageReport.xml
+          files: build/reports/jacoco/combinedCoverageReport/combinedCoverageReport.xml
           flags: totalTest
           name: codecov-total
           verbose: true
