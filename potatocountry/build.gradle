@@ -1,36 +1,106 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '3.4.1'
-	id 'io.spring.dependency-management' version '1.1.7'
+    id 'java'
+    id 'org.springframework.boot' version '3.4.1'
+    id 'io.spring.dependency-management' version '1.1.7'
+    id 'checkstyle'
+    id 'jacoco'
+    id 'java-test-fixtures'
 }
 
 group = 'com.potatocountry'
 version = '0.0.1-SNAPSHOT'
 
 java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
-	}
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
 }
 
 configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
+}
+
+checkstyle {
+    maxWarnings = 0
+    configFile = file("${rootDir}/naver-checkstyle-rules.xml")
+    configProperties = ["suppressionFile": "${rootDir}/naver-checkstyle-suppressions.xml"]
+    toolVersion = "10.12.1"
+}
+
+jacoco {
+    toolVersion = "0.8.10"
+}
+
+def jacocoExcludes = ['*Application*',
+                      "**/config/*",
+                      "**/security/*",
+                      "**/external/*",
+                      "**/dto/*"]
+
+// Custom task to generate a combined coverage report
+task combinedCoverageReport(type: JacocoReport) {
+    description = 'Generates a combined coverage report from unit and integration tests.'
+    group = 'verification'
+
+    // Specify the source sets to include in the report
+    sourceSets sourceSets.main
+
+    // Combine execution data from different tasks
+    executionData file("$buildDir/jacoco/test.exec"),
+            file("$buildDir/jacoco/unitTest.exec"),
+            file("$buildDir/jacoco/integrationTest.exec")
+
+    // Specify class directories, excluding the defined patterns
+    classDirectories.setFrom(files(
+            fileTree(dir: "$buildDir/classes/java/main", exclude: jacocoExcludes)
+    ))
+
+    reports {
+        xml.required = true
+        html.required = true
+    }
+}
+
+// Example unit test task
+task unitTest(type: Test) {
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+
+// Example integration test task
+task integrationTest(type: Test) {
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+
+// Existing jacocoTestReport task
+jacocoTestReport {
+    dependsOn unitTest, integrationTest
+
+    reports {
+        xml.required = true
+        html.required = true
+    }
+}
+
+// Ensure the combined coverage report runs after tests
+combinedCoverageReport.dependsOn unitTest, integrationTest
+
+// Specify the test task to run
+test {
+    useJUnitPlatform()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compileOnly 'org.projectlombok:lombok'
-	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-}
-
-tasks.named('test') {
-	useJUnitPlatform()
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
