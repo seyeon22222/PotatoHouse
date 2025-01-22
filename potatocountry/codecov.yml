@@ -2,7 +2,7 @@ coverage:
   status:
     project:
       integration:
-        target: 30%
+        target: 60%
         flags:
           - totalTest
 flags:
