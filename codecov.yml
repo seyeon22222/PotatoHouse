@@ -8,4 +8,4 @@ coverage:
 flags:
   totalTest:
     paths:
-      - potatocountry/src/main/java/com/potatocountry
+      - ./potatocountry/potatocountry/src/main/java/com/potatocountry
