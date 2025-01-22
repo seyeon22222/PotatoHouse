@@ -24,7 +24,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: 👨‍👨‍👧‍👦 Total Test with Gradle
-        run: ./gradlew --console verbose clean combinedCoverageReport -x test
+        run: ./gradlew --console verbose clean combinedCoverageReport
 
       - name: 📲 Upload totalTest coverage to Codecov
         uses: codecov/codecov-action@v5
