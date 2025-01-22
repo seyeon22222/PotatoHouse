@@ -1,0 +1,12 @@
+coverage:
+  status:
+    project:
+      default:
+        target: 60%
+        threshold: 10%
+        flags:
+          - totalTest
+flags:
+  totalTest:
+    paths:
+      - ./potatocountry

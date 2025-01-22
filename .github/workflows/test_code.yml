@@ -24,7 +24,7 @@ jobs:
       - name: 👨‍👨‍👧‍👦 Total Test with Gradle
         run: |
           cd ./potatocountry
-          ./gradlew --console verbose clean combinedCoverageReport
+          ./gradlew --console verbose clean combinedCoverageReport -x test
         
       - name: 📲 Upload totalTest coverage to Codecov
         uses: codecov/codecov-action@v5

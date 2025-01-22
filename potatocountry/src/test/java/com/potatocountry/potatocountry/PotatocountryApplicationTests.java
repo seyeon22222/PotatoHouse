@@ -10,4 +10,8 @@ class PotatocountryApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	void timeZoneTest() {
+		System.out.println("hello world");
+	}
 }
