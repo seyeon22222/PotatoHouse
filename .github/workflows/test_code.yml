@@ -25,7 +25,10 @@ jobs:
 
       - name: 👨‍👨‍👧‍👦 Total Test with Gradle
         run: ./gradlew --console verbose clean combinedCoverageReport
-
+        
+      - name: Debug - List files
+        run: ls -R ./build/reports/jacoco
+        
       - name: 📲 Upload totalTest coverage to Codecov
         uses: codecov/codecov-action@v5
         with:
