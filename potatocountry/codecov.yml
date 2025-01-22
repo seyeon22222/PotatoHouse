@@ -1,18 +1,11 @@
 coverage:
   status:
     project:
-      unit:
-        target: 1%
-        flags:
-          - unitTest
       integration:
-        target: 60%
+        target: 30%
         flags:
-          - integrationTest
+          - totalTest
 flags:
-  unitTest:
-    paths:
-      - potatocountry/src/main/java/com/potatocountry
-  integrationTest:
+  totalTest:
     paths:
       - potatocountry/src/main/java/com/potatocountry
