@@ -1,0 +1,29 @@
+name: 👮Checkstyle validation
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+defaults:
+  run:
+    working-directory: ./potatocountry
+
+jobs:
+  checkstyle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: 21
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+      - name: Main checkstyle
+        run: ./gradlew --console verbose clean checkstyleMain
+      - name: ️Test checkstyle
+        run: ./gradlew --console verbose clean checkstyleTest
+      - name: ️TestFixture checkstyle
+        run: ./gradlew --console verbose clean checkstyleTestFixture
