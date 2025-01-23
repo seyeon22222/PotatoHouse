@@ -1,6 +1,7 @@
 coverage:
   status:
     project:
+      default: false
       totalTest:
         target: 60%
         threshold: 10%
