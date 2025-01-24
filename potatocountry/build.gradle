@@ -8,7 +8,7 @@ plugins {
 }
 
 group = 'com.potatocountry'
-version = '0.0.1-SNAPSHOT'
+version = 'Test'
 
 java {
     toolchain {

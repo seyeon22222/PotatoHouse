@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:latest
+    networks:
+      - potato country
+#    volumes:
+#      -
+    ports:
+      - "3306:3306"
+
+  tomcat:
+    build: ./potatocountry
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      - potato country
+#    volumes:
+#      -
+    ports:
+      - "8080:8080"
+
+  redis:
+    image: redis:latest
+    networks:
+      - potato country
+#    volumes:
+#      -
+    ports:
+      - "6379:6379"
+
+networks:
+  potato country:
+    driver: bridge
