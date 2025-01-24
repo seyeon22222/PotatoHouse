@@ -1,12 +1,9 @@
 coverage:
   status:
     project:
-      default:
+      default: false
+      totalTest:
         target: 60%
-        threshold: 10%
-        flags:
-          - totalTest
-flags:
-  totalTest:
-    paths:
-      - ./potatocountry
+        paths:
+          - "potatocountry/**"
+
