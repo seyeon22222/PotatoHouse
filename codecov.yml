@@ -10,4 +10,4 @@ coverage:
 flags:
   totalTest:
     paths:
-      - ./potatocountry
+      - "potatocountry"
