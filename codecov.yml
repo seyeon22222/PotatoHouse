@@ -6,4 +6,6 @@ coverage:
         target: 60%
         paths:
           - "potatocountry"
+        if_ci_failed: error
+        informational: false
 
