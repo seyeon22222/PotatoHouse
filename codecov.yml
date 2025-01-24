@@ -5,7 +5,5 @@ coverage:
       totalTest:
         target: 60%
         paths:
-          - "potatocountry"
-        if_ci_failed: error
-        informational: false
+          - "potatocountry/**"
 
